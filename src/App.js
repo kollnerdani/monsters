@@ -13,14 +13,13 @@ class App extends Component {
         .then((users) =>{
                this.setState(
                    () => {
-                       return {monsters: users}
+                       return { monsters: users }
                    }
                )
         }
         )
   }
-
-    render (){
+  render (){
     return (
        <div className="App">
            {this.state.monsters.map((monster) =>{
