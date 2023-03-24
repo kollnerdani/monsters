@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import Monster from '../monster';
 import './monster_list.css'
 
 class MonsterList extends Component {
@@ -8,14 +9,8 @@ class MonsterList extends Component {
         return(
             <div className='card-list'>
                 { monsters.map( (monster) => {
-                    const { name, id, email } = monster
-                    return(
-                        <div className='card-container' key={id}>
-                            <img src={`https://robohash.org/${id}?set=set2&size=180x180`} alt={`monster ${name}`}/>
-                            <h2>{name}</h2>
-                            <p>{email}</p>
-                        </div>
-                    )
+                    const {name, email, id} = monster;
+                    return <Monster monster={monster} key={monster.id}/>
                 })}
             </div>
         )
