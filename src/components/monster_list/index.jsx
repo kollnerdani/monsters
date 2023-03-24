@@ -1,8 +1,7 @@
 import Monster from '../monster';
 import './monster_list.css'
 
-const MonsterList = (props) => {
-    const { monsters } = props
+const MonsterList = ({ monsters }) => {
     return(
         <div className='card-list'>
             { monsters.map( (monster) => {
