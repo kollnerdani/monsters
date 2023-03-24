@@ -1,5 +1,7 @@
 import './App.css';
 import  { Component } from 'react';
+import MonsterList from "./components/monster-list";
+
 class App extends Component {
   constructor() {
     super();
@@ -39,13 +41,7 @@ class App extends Component {
       return (
         <div className="App">
             <input className='search-box' type="text" placeholder='search' onChange={search}/>
-            {filteredMonsters.map((monster) =>{
-               return (
-                   <div key={monster.id}>
-                       <h1>{monster.name}</h1>
-                   </div>
-               )
-           })}
+            <MonsterList  monsters= {filteredMonsters} />
        </div>
    );
  }
