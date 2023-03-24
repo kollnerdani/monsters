@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import MonsterList from "./components/monster_list";
 
 import SearchBar from "./components/search_bar";
@@ -6,16 +6,28 @@ import './App.css';
 
 const App = () => {
     const [searchField, setSearchField] = useState('')
-    console.log(searchField)
+    const [monsters, setMonsters] = useState([])
+
+    useEffect( () =>{
+        console.log('effect')
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then((response => response.json()))
+            .then((users) =>{setMonsters(users) });
+    }, [])
+
+
     const onSearch = (event) =>{
       const searchFieldString = event.target.value.toLowerCase()
       setSearchField(searchFieldString)
-  }
+    }
+    const filteredMonsters = monsters.filter((monster) =>{
+        return monster.name.toLowerCase().includes(searchField)
+    })
     return (
         <div className="App">
             <h1 className="app-title">Monsters</h1>
             <SearchBar onChangeHandler = {onSearch} placeholder='search' className='monsters-search-box'/>
-            {/*<MonsterList  monsters= {filteredMonsters} />*/}
+            <MonsterList  monsters= {filteredMonsters} />
         </div>
     )
 }
