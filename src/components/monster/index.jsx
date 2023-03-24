@@ -1,7 +1,7 @@
 import './monster.css'
 
-const Monster = (props) => {
-    const { id, name, email } = props.monster
+const Monster = ({ monster }) => {
+    const { id, name, email } = monster
     return (
         <div className='card-container' key={id}>
             <img src={`https://robohash.org/${id}?set=set2&size=180x180`} alt={`monster ${name}`}/>
